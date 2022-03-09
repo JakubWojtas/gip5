@@ -5,6 +5,10 @@
     <include file="changelog/migrations/1-create-schem.xml"/>
     <include file="changelog/migrations/2-create-role.xml"/>
     <include file="changelog/migrations/3-create-user.xml"/>
+    <include file="changelog/migrations/4-create-transaction.xml"/>
+    <include file="changelog/migrations/5-create-stock.xml"/>
+    <include file="changelog/migrations/6-create-product-type.xml"/>
+    <include file="changelog/migrations/7-create-products.xml"/>
 
 
 </databaseChangeLog>

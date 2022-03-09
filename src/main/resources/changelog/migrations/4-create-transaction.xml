@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="4" author="Kuba Wojtas">
+        <createTable tableName="transactions" schemaName="liquibase">
+            <column name="trans_id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+            </column>
+            <column name="pruduct_amount" type="int">
+            </column>
+            <column name="date" type="date">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_user_trans"
+                                 baseTableName="transactions"
+                                 baseTableSchemaName="liquibase"
+                                 baseColumnNames="user_id"
+                                 referencedColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedTableSchemaName="liquibase"
+        />
+    </changeSet>
+
+</databaseChangeLog>

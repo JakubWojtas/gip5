@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="7" author="Kuba Wojtas">
+        <createTable tableName="products" schemaName="liquibase">
+            <column name="prod_id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+            </column>
+            <column name="description" type="varchar(40)">
+            </column>
+            <column name="limit" type="varchar(10)">
+            </column>
+            <column name="prod_type_id" type="bigint">
+            </column>
+            <column name="stock_id" type="bigint">
+            </column>
+            <column name="trans_id" type="bigint">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_type_prod"
+                                 baseTableName="products"
+                                 baseTableSchemaName="liquibase"
+                                 baseColumnNames="prod_type_id"
+                                 referencedColumnNames="prod_type_id"
+                                 referencedTableName="product_types"
+                                 referencedTableSchemaName="liquibase"
+        />
+        <addForeignKeyConstraint constraintName="fk_stock_prod"
+                                 baseTableName="products"
+                                 baseTableSchemaName="liquibase"
+                                 baseColumnNames="stock_id"
+                                 referencedColumnNames="stock_id"
+                                 referencedTableName="stock"
+                                 referencedTableSchemaName="liquibase"
+        />
+        <addForeignKeyConstraint constraintName="fk_trans_prod"
+                                 baseTableName="products"
+                                 baseTableSchemaName="liquibase"
+                                 baseColumnNames="trans_id"
+                                 referencedColumnNames="trans_id"
+                                 referencedTableName="transactions"
+                                 referencedTableSchemaName="liquibase"
+        />
+    </changeSet>
+
+</databaseChangeLog>

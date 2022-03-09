@@ -8,7 +8,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private long user_id;
 
     @Column(name = "Name")
     private String user_name;
@@ -20,7 +20,7 @@ public class User {
     private String user_email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "user_role_id")
     private Roles user_role;
 
     @Column(name = "Transactions")

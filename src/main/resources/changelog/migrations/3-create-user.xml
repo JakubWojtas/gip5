@@ -14,11 +14,18 @@
             </column>
             <column name="email" type="varchar(40)">
             </column>
-            <column name="role_id" type="BIGINT">
-            </column>
-            <column name="transactions" type="varchar(40)">
+            <column name="user_role_id" type="bigint">
+                <constraints nullable="false"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint constraintName="fk_role_user"
+                                 baseTableName="users"
+                                 baseTableSchemaName="liquibase"
+                                 baseColumnNames="user_role_id"
+                                 referencedColumnNames="roles_id"
+                                 referencedTableName="roles"
+                                 referencedTableSchemaName="liquibase"
+        />
     </changeSet>
 
 </databaseChangeLog>

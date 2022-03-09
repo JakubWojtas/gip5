@@ -1,10 +1,17 @@
 package com.example.test.backend.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Stock {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "stock_id", nullable = false)
+    private Long stock_id;
 
+    @Column(name = "Products")
+    @OneToMany(mappedBy = "stock", cascade = CascadeType.ALL)
     private List<Product> products;
 
     //Constructor
@@ -21,6 +28,14 @@ public class Stock {
 
 
     //GET&SET
+
+    public Long getStock_id() {
+        return stock_id;
+    }
+
+    public void setStock_id(Long stock_id) {
+        this.stock_id = stock_id;
+    }
 
     public List<Product> getProducts() {
         return products;

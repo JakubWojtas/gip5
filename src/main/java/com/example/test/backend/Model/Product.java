@@ -29,13 +29,13 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "trans_id")
-    private Transactions transactions;
+    private Transaction transactions;
 
     //Constuctors
 
     public Product(){}
 
-    public Product(Long prod_id, String prod_name, String prod_desc, String prod_limit, Product_Type prod_type_id, Transactions transactions) {
+    public Product(Long prod_id, String prod_name, String prod_desc, String prod_limit, Product_Type prod_type_id, Transaction transactions) {
         this.prod_id = prod_id;
         this.prod_name = prod_name;
         this.prod_desc = prod_desc;
@@ -102,7 +102,7 @@ public class Product {
         return stock;
     }
 
-    public Transactions getTransactions() {
+    public Transaction getTransactions() {
         return transactions;
     }
 
@@ -115,7 +115,7 @@ public class Product {
         private String prod_limit;
         private Product_Type prod_type_id;
         private Stock stock;
-        private Transactions transactions;
+        private Transaction transactions;
 
         public Builder() {
         }
@@ -150,7 +150,7 @@ public class Product {
             return this;
         }
 
-        public Builder transactions(Transactions val) {
+        public Builder transactions(Transaction val) {
             transactions = val;
             return this;
         }

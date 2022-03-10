@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Transactions", schema = "liquibase")
-public class Transactions {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long trans_id;
@@ -23,15 +23,15 @@ public class Transactions {
     private List<Product> products;
 
     //Constructor
-    public Transactions(){}
+    public Transaction(){}
 
-    public Transactions(int pruduct_amount, Date date, List<Product> products) {
+    public Transaction(int pruduct_amount, Date date, List<Product> products) {
         this.pruduct_amount = pruduct_amount;
         this.date = date;
         this.products = products;
     }
 
-    private Transactions(Builder builder) {
+    private Transaction(Builder builder) {
         setPruduct_amount(builder.pruduct_amount);
         setDate(builder.date);
         setProducts(builder.products);
@@ -105,8 +105,8 @@ public class Transactions {
             return this;
         }
 
-        public Transactions build() {
-            return new Transactions(this);
+        public Transaction build() {
+            return new Transaction(this);
         }
     }
 }

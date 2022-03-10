@@ -25,7 +25,7 @@ public class User {
 
     @Column(name = "Transactions")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Transactions> transactions;
+    private List<Transaction> transactions;
 
     //constructoren
 

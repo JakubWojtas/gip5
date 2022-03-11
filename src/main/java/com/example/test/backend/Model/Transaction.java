@@ -3,6 +3,7 @@ package com.example.test.backend.Model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="Transactions", schema = "liquibase")
@@ -15,7 +16,7 @@ public class Transaction {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private int pruduct_amount;
+    private int product_amount;
 
     private Date date;
 
@@ -23,16 +24,21 @@ public class Transaction {
     private List<Product> products;
 
     //Constructor
+
     public Transaction(){}
 
-    public Transaction(int pruduct_amount, Date date, List<Product> products) {
-        this.pruduct_amount = pruduct_amount;
+    public Transaction(Long trans_id, User user, int product_amount, Date date, List<Product> products) {
+        this.trans_id = trans_id;
+        this.user = user;
+        this.product_amount = product_amount;
         this.date = date;
         this.products = products;
     }
 
     private Transaction(Builder builder) {
-        setPruduct_amount(builder.pruduct_amount);
+        setTrans_id(builder.trans_id);
+        setUser(builder.user);
+        setProduct_amount(builder.product_amount);
         setDate(builder.date);
         setProducts(builder.products);
     }
@@ -40,12 +46,28 @@ public class Transaction {
 
     //GET&SET
 
-    public int getPruduct_amount() {
-        return pruduct_amount;
+    public Long getTrans_id() {
+        return trans_id;
     }
 
-    public void setPruduct_amount(int pruduct_amount) {
-        this.pruduct_amount = pruduct_amount;
+    public void setTrans_id(Long trans_id) {
+        this.trans_id = trans_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getProduct_amount() {
+        return product_amount;
+    }
+
+    public void setProduct_amount(int product_amount) {
+        this.product_amount = product_amount;
     }
 
     public Date getDate() {
@@ -64,34 +86,43 @@ public class Transaction {
         this.products = products;
     }
 
-    //Functie
+    //Funtions
 
     public void addProduct(Product product){
         if (product == null) throw new IllegalArgumentException();
-        products.add(product);
+        this.products.add(product);
     }
 
-    public void deleteProduct(Product product){
+    public void removeProduct(Product product){
         if (product == null) throw new IllegalArgumentException();
-        for (Product p : products){
-            if(p.getProd_id().equals(product.getProd_id())){
-                products.remove(product);
-            }
-        }
+        this.products.removeIf(prod ->
+                Objects.equals(prod.getProd_id(), product.getProd_id()));
     }
 
     //Builder
 
     public static final class Builder {
-        private int pruduct_amount;
+        private Long trans_id;
+        private User user;
+        private int product_amount;
         private Date date;
         private List<Product> products;
 
         public Builder() {
         }
 
-        public Builder pruduct_amount(int val) {
-            pruduct_amount = val;
+        public Builder trans_id(Long val) {
+            trans_id = val;
+            return this;
+        }
+
+        public Builder user(User val) {
+            user = val;
+            return this;
+        }
+
+        public Builder product_amount(int val) {
+            product_amount = val;
             return this;
         }
 
@@ -109,4 +140,5 @@ public class Transaction {
             return new Transaction(this);
         }
     }
+
 }

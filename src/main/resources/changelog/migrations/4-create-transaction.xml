@@ -10,7 +10,7 @@
             </column>
             <column name="user_id" type="bigint">
             </column>
-            <column name="pruduct_amount" type="int">
+            <column name="product_amount" type="int">
             </column>
             <column name="date" type="date">
             </column>

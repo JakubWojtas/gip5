@@ -5,6 +5,9 @@ import com.example.test.backend.repository.transactionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class transactionsServiceImpl implements transactionsService{
@@ -23,8 +26,18 @@ public class transactionsServiceImpl implements transactionsService{
     }
 
     @Override
-    public boolean deleteTransaction(Transaction transaction) {
-        transactionsRepository.delete(transaction);
+    public boolean deleteTransaction(Long id) {
+        transactionsRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public Optional<Transaction> findById(Long id) {
+        return transactionsRepository.findById(id);
+    }
+
+    @Override
+    public List<Transaction> findAll() {
+        return transactionsRepository.findAll();
     }
 }

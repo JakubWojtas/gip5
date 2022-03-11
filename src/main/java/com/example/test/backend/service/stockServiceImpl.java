@@ -5,6 +5,9 @@ import com.example.test.backend.repository.stockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class stockServiceImpl implements stockService{
     @Autowired
@@ -22,8 +25,19 @@ public class stockServiceImpl implements stockService{
     }
 
     @Override
-    public boolean delete(Stock stock) {
-        stockRepository.delete(stock);
+    public boolean delete(Long id) {
+        stockRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public Optional<Stock> findById(Long id) {
+        return stockRepository.findById(id);
+    }
+
+    @Override
+    public List<Stock> findAll() {
+        return stockRepository.findAll();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.test.backend.Model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Stock {
@@ -53,13 +54,10 @@ public class Stock {
         products.add(product);
     }
 
-    public void deleteProduct(Product product){
+    public void removeProduct(Product product){
         if (product == null) throw new IllegalArgumentException();
-        for (Product p : products){
-            if(p.getProd_id().equals(product.getProd_id())){
-                products.remove(product);
-            }
-        }
+        this.products.removeIf(prod ->
+                Objects.equals(prod.getProd_id(), product.getProd_id()));
     }
 
     //Builder

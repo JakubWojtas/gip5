@@ -1,0 +1,29 @@
+.header{
+    height: 80px;
+    background: #f3eed9;
+}
+
+.logo{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.drawer{
+    margin-left: 40px;
+    margin-right: 50px;
+    background-color: #e30147;
+    color: #f3eed9;
+}
+
+div#drawer{
+    background-color: grey;
+}
+
+.verticalLayout{
+    padding-left: 25px;
+}
+a{
+    font-size: 22px;
+    margin-top: 20px;
+    color: #e30147;
+}
